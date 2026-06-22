@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<a href="{% url "home" %}" class="btn btn-secondary">Home</a>
+
+{% comment %} {% block title %}{{ post.title }} - My Blog{% endblock title %} {% endcomment %}
+
+
+
+<div class="container my-5">
+    <div class="row">
+        <!-- Main Post Content -->
+        <div class="col-lg-8">
+            <article class="mb-5">
+                <h1 class="mb-3">{{ post.title }}</h1>
+                {% if post.postimg %}
+                    <img src="{{ post.postimg.url }}" class="img-fluid rounded mb-4" alt="{{ post.title }}">
+                {% endif %}
+                <p class="lead">{{ post.summary }}</p>
+                <hr>
+                <div class="post-content">
+                    {{ post.content|safe }}
+                </div>
+            </article>
+
+            <!-- Social Share -->
+            <div class="mt-4">
+    <h5>Share this post:</h5>
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.title }}" 
+       target="_blank" class="btn btn-outline-primary btn-sm">Twitter</a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+       target="_blank" class="btn btn-outline-primary btn-sm">Facebook</a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ post.title }}" 
+       target="_blank" class="btn btn-outline-primary btn-sm">LinkedIn</a>
+
+    <!-- WhatsApp -->
+    <a href="https://api.whatsapp.com/send?text={{ post.title }} {{ request.build_absolute_uri }}" 
+       target="_blank" class="btn btn-outline-success btn-sm">WhatsApp</a>
+
+    <!-- Instagram (Note: Instagram doesn’t have a direct share URL like others) -->
+    <a href="https://www.instagram.com/" 
+       target="_blank" class="btn btn-outline-danger btn-sm">Instagram</a>
+</div>
+
+            <!-- Comments Section -->
+            <div class="mt-5">
+                <h3>Comments</h3>
+                <div class="mb-4">
+                    {% for comment in comments %}
+                        <div class="border p-3 mb-2">
+                            <strong>{{ comment.name }}</strong> <small>{{ comment.created_at }}</small>
+                            <p>{{ comment.body }}</p>
+                        </div>
+                    {% empty %}
+                        <p>No comments yet. Be the first!</p>
+                    {% endfor %}
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+
+            {% comment %} <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Category</h5>
+                    <p>{{ post.category.name }}</p>
+                </div>
+            </div> {% endcomment %}
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Posts</h5>
+                    <ul class="list-unstyled">
+                        {% for recent in recent_posts %}
+                        <li><a href="{% url 'blog:detail' recent.id %}">{{ recent.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

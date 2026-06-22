@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<a href="{% url "home" %}" class="btn btn-secondary">Home</a>
+<div class="container my-5">
+    <h1 class="mb-4">Get in Touch</h1>
+    <p class="lead">
+        I will love to hear from you! Whether you have questions, feedback, collaboration ideas,you need a website for your business, 
+        or just want to say hello, feel free to reach out.
+    </p>
+
+    <div class="mb-4">
+        <p>📧 <strong>Email:</strong> 
+            <a href="mailto:yourname@example.com" class="btn btn-primary">Email Me</a>
+        </p>
+    </div>
+
+    <div class="mb-4">
+        <p>🌐 <strong>Social Media:</strong></p>
+        <div class="d-flex gap-3">
+            <a href="https://twitter.com/yourhandle" target="_blank" class="btn btn-outline-primary">
+                <i class="fab fa-twitter me-2"></i> Twitter
+            </a>
+            <a href="https://linkedin.com/in/yourhandle" target="_blank" class="btn btn-outline-info">
+                <i class="fab fa-linkedin me-2"></i> LinkedIn
+            </a>
+            <a href="https://instagram.com/yourhandle" target="_blank" class="btn btn-outline-danger">
+                <i class="fab fa-instagram me-2"></i> Instagram
+            </a>
+            <a href="https://facebook.com/yourhandle" target="_blank" class="btn btn-outline-primary">
+                <i class="fab fa-facebook me-2"></i> Facebook
+            </a>
+        </div>
+    </div>
+
+    <p>
+        I value every message and do my best to respond promptly. 
+        Your thoughts help shape the future of Vista Blog, so don’t hesitate to share what’s on your mind.
+    </p>
+</div>
+
+{% comment %} <footer class="footer text-center py-3 bg-light mt-5">
+    <p class="mb-0">© 2026 Vista Blog. All rights reserved.</p>
+</footer> {% endcomment %}
+{% endblock %}

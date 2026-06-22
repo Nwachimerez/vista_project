@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}About - My Blog{% endblock title %}
+{% block content %}
+<a href="{% url "home" %}" class="btn btn-secondary">Home</a>
+<div class="container my-5 text-center">
+    <h1>Welcome to Vista Blog</h1>
+    <p>Welcome to Vista Blog! This is where I share Ideas, News, Stories, and Inspiration.</p>
+</div>
+
+<div class="container-fluid">
+<h3>See the world of technology through a clear lens.</h3>
+<p>Hello! I'm delighted to welcome you to Vista Blog.
+In a fast-paced digital world, my mission is simple: to cut through the noise and provide clear, insightful, and actionable content on all things technology, programming, and web development, with a special focus on the robust and elegant Django framework.</p>
+</div>
+
+<div class="container-fluid">
+    <h3>My Story</h3>
+    <p>I started my journey into web development years ago, fueled by a curiosity for how digital experiences come to life. The moment I discovered Python and Django, I was hooked. I realized the immense potential these tools have for crafting innovative solutions, but also the challenges newcomers and seasoned developers face. This blog is my way of sharing the lessons learned, the problems solved, and the projects that inspire me.</p>
+</div>    
+
+<div class="container-fluid">
+<h3>What You Will Find Here</h3>
+<p>Vista Blog is for anyone who wants to deepen their understanding of technology and development. Whether you're a budding programmer, a tech enthusiast, or a fellow developer, you'll find:</p>
+</div>
+
+<div class="container-fluid">
+<h3>In-depth Tutorials: Step-by-step guides on building applications, troubleshooting issues, and mastering various tools.</h3>
+<p>Tech News & Trends: Honest opinions and coverage of the latest innovations in AI, software, and gadgets.</p>
+<p>Practical Tips: Productivity hacks, reviews of useful software, and best practices for efficient coding.</p>
+<p>Project Showcases: A look into real-world applications and how specific technical solutions can make a difference.</p>
+<p>News about the happenings in our sorroundings and foreign affairs</p>
+</div>
+
+<div class="container-fluid">
+<h3>My Values</h3>
+<p>Clarity and Simplicity: Complex topics are broken down into easy-to-understand language and organized writing.</p>
+<p>Authenticity: All content is based on real experience, not just copy-pasted information.</p>
+<p>Community: This is a place for shared learning and growth. Your input, comments, and questions are always welcome.</p>
+</div>
+
+<div class="container-fluid">
+<h3>Join the Community</h3>
+<p>Explore some of my popular blog posts here.</p>
+<p>Follow me on social media (insert platform name) for real-time updates and behind-the-scenes content.</p>
+<p>Feel free to contact me with any questions, ideas or you need a website for your business</p>
+</div>
+
+ <hr>
+    <h3>Subscribe to get updates</h3>
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+{% endblock content %}
